@@ -21,5 +21,5 @@ type Props = {
 };
 
 export default class Tooltip extends React.Component<Props, any> {
-  toggleTooltip: () => void;
+  toggleTooltip: (_, show?: boolean) => void;
 }
