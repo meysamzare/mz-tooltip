@@ -49,17 +49,17 @@ class Tooltip extends React.Component<Props, State> {
   renderedElement;
   timeout;
 
-  toggleTooltip = () => {
-    const { onClose } = this.props;
-    this.getElementPosition();
-    this.setState(prevState => {
-      if (prevState.isVisible && !isIOS) {
-        onClose && onClose();
-      }
+  toggleTooltip = (_, show) => {
+        const { onClose } = this.props;
+        this.getElementPosition();
+        this.setState((prevState) => {
+            if (prevState.isVisible && !isIOS) {
+                onClose && onClose();
+            }
 
-      return { isVisible: !prevState.isVisible };
-    });
-  };
+            return { isVisible: show != null ? show : !prevState.isVisible };
+        });
+    };
 
   wrapWithAction = (actionType, children) => {
     switch (actionType) {
